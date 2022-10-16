@@ -18,9 +18,9 @@ namespace MarketUtilities_V2.Models
         [Display(Name = "Codigo de Barras")]
         [Required]
         public string codigoDeBarras { get; set; }
-        [Display(Name = "Pasllo: ")]
+        [Display(Name = "Categoria: ")]
         [Required]
-        public Categoria categoriaID { get; set; }
+        public string categoriaID { get; set; }
         [Display(Name = "Modificado Por:")]
         [Required]
         public int modified_by { get; set; }

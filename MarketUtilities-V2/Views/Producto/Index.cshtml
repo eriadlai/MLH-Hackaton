@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MarketUtilities_V2.Models.Producto>
+﻿@model MarketUtilities_V2.Data.ViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -13,28 +13,31 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.nombre)
+                @Html.DisplayNameFor(model => Model.Producto.nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.precio)
+                @Html.DisplayNameFor(model => Model.Producto.precio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.sku)
+                @Html.DisplayNameFor(model => Model.Producto.sku)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.codigoDeBarras)
+                @Html.DisplayNameFor(model => Model.Producto.codigoDeBarras)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.modified_by)
+                @Html.DisplayNameFor(model => Model.Producto.modified_by)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.moified_date)
+                @Html.DisplayNameFor(model => Model.Producto.moified_date)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => Model.Producto.categoriaID)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.oListaProducto) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.nombre)
@@ -53,6 +56,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.moified_date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.categoriaID)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.id">Edit</a> |

@@ -1,8 +1,58 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model MarketUtilities_V2.Data.ViewModel
+
+@{
+    ViewData["Title"] = "HOME";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Index</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.oListaCategoria.First().nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.oListaCategoria.First().modified_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.oListaCategoria.First().created_by)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.oListaCategoria.First().moified_date)
+            </th>
+            <th>
+                Pasillo
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.oListaCategoria)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.modified_by)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.created_by)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.moified_date)
+                </td>
+
+              <td>
+                  @Html.DisplayFor(modelItem => item.pasilloID)
+              </td>
+
+
+                <td>
+                    <a asp-controller="Categorias" asp-action="Details" asp-route-id="@item.id">Details</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

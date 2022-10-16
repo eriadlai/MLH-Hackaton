@@ -18,8 +18,8 @@ namespace MarketUtilities_V2.Models
         [Display(Name = "Fecha de Modifcacion")]
         [Required]
         public DateTime moified_date { get; set; }
-        [Display(Name = "Pasllo: ")]
+        [Display(Name = "Pasillo: ")]
         [Required]
-        public Pasillo pasilloID { get; set; }
+        public string pasilloID { get; set; }
     }
 }

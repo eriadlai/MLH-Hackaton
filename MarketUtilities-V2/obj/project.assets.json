@@ -9442,11 +9442,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Adlai CG\\source\\repos\\MarketUtilities-V2\\MarketUtilities-V2\\MarketUtilities-V2.csproj",
+      "projectUniqueName": "D:\\DocumentosHDD\\Programacion\\Github Desktop\\MLH-Hackaton\\MarketUtilities-V2\\MarketUtilities-V2.csproj",
       "projectName": "MarketUtilities-V2",
-      "projectPath": "C:\\Users\\Adlai CG\\source\\repos\\MarketUtilities-V2\\MarketUtilities-V2\\MarketUtilities-V2.csproj",
+      "projectPath": "D:\\DocumentosHDD\\Programacion\\Github Desktop\\MLH-Hackaton\\MarketUtilities-V2\\MarketUtilities-V2.csproj",
       "packagesPath": "C:\\Users\\Adlai CG\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Adlai CG\\source\\repos\\MarketUtilities-V2\\MarketUtilities-V2\\obj\\",
+      "outputPath": "D:\\DocumentosHDD\\Programacion\\Github Desktop\\MLH-Hackaton\\MarketUtilities-V2\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

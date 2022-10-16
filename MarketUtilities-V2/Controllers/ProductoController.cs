@@ -22,7 +22,10 @@ namespace MarketUtilities_V2.Controllers
         // GET: Producto
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Producto.ToListAsync());
+            ViewModel oModelo = new ViewModel();
+            oModelo.oListaProducto = _context.Producto;
+            
+            return View(oModelo);
         }
 
         // GET: Producto/Details/5
@@ -46,7 +49,9 @@ namespace MarketUtilities_V2.Controllers
         // GET: Producto/Create
         public IActionResult Create()
         {
-            return View();
+            ViewModel oModelo = new ViewModel();
+            oModelo.oListaCategoria = _context.Categoria;
+            return View(oModelo);
         }
 
         // POST: Producto/Create
@@ -54,7 +59,7 @@ namespace MarketUtilities_V2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nombre,precio,sku,codigoDeBarras,modified_by,moified_date")] Producto producto)
+        public async Task<IActionResult> Create([Bind("id,nombre,precio,sku,codigoDeBarras,modified_by,moified_date,categoriaID")] Producto producto)
         {
             if (ModelState.IsValid)
             {
@@ -68,17 +73,20 @@ namespace MarketUtilities_V2.Controllers
         // GET: Producto/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewModel oModelo = new ViewModel();
+            oModelo.oListaCategoria = _context.Categoria;
+            
             if (id == null || _context.Producto == null)
             {
                 return NotFound();
             }
 
-            var producto = await _context.Producto.FindAsync(id);
-            if (producto == null)
+                oModelo.Producto = await _context.Producto.FindAsync(id);
+            if (oModelo.Producto == null)
             {
                 return NotFound();
             }
-            return View(producto);
+            return View(oModelo);
         }
 
         // POST: Producto/Edit/5
@@ -86,7 +94,7 @@ namespace MarketUtilities_V2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nombre,precio,sku,codigoDeBarras,modified_by,moified_date")] Producto producto)
+        public async Task<IActionResult> Edit(int id, [Bind("id,nombre,precio,sku,codigoDeBarras,modified_by,moified_date,categoriaID")] Producto producto)
         {
             if (id != producto.id)
             {

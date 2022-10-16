@@ -22,7 +22,10 @@ namespace MarketUtilities_V2.Controllers
         // GET: Categorias
         public async Task<IActionResult> Index()
         {
-              return View(await _context.Categoria.ToListAsync());
+            ViewModel oModelo = new ViewModel();
+            oModelo.oListaCategoria = _context.Categoria;
+            oModelo.oListaPasillo = _context.Pasillo;
+            return View(oModelo);
         }
 
         // GET: Categorias/Details/5
@@ -46,15 +49,15 @@ namespace MarketUtilities_V2.Controllers
         // GET: Categorias/Create
         public IActionResult Create()
         {
-            return View();
+            ViewModel oModelo = new ViewModel();
+            oModelo.oListaPasillo = _context.Pasillo;
+           
+            return View(oModelo);
         }
 
-        // POST: Categorias/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,nombre,modified_by,created_by,moified_date")] Categoria categoria)
+        public async Task<IActionResult> Create([Bind("id,nombre,modified_by,created_by,moified_date,pasilloID")] Categoria categoria)
         {
             if (ModelState.IsValid)
             {
@@ -72,13 +75,14 @@ namespace MarketUtilities_V2.Controllers
             {
                 return NotFound();
             }
-
-            var categoria = await _context.Categoria.FindAsync(id);
-            if (categoria == null)
+            ViewModel oModelo = new ViewModel();
+            oModelo.oListaPasillo = _context.Pasillo;
+            oModelo.Categoria = await _context.Categoria.FindAsync(id);
+            if (oModelo.Categoria == null)
             {
                 return NotFound();
             }
-            return View(categoria);
+            return View(oModelo);
         }
 
         // POST: Categorias/Edit/5
@@ -86,7 +90,7 @@ namespace MarketUtilities_V2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,nombre,modified_by,created_by,moified_date")] Categoria categoria)
+        public async Task<IActionResult> Edit(int id, [Bind("id,nombre,modified_by,created_by,moified_date,pasilloID")] Categoria categoria)
         {
             if (id != categoria.id)
             {

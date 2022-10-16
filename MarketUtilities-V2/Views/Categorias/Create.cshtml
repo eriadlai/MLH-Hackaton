@@ -1,4 +1,4 @@
-﻿@model MarketUtilities_V2.Models.Categoria
+﻿@model MarketUtilities_V2.Data.ViewModel
 
 @{
     ViewData["Title"] = "Create";
@@ -13,24 +13,42 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" />
-                <span asp-validation-for="nombre" class="text-danger"></span>
+                <label asp-for="Categoria.nombre" class="control-label"></label>
+                <input asp-for="Categoria.nombre" class="form-control" />
+                <span asp-validation-for="Categoria.nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="modified_by" class="control-label"></label>
-                <input asp-for="modified_by" class="form-control" />
-                <span asp-validation-for="modified_by" class="text-danger"></span>
+                <label asp-for="Categoria.modified_by" class="control-label"></label>
+                <input asp-for="Categoria.modified_by" class="form-control" />
+                <span asp-validation-for="Categoria.modified_by" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="created_by" class="control-label"></label>
-                <input asp-for="created_by" class="form-control" />
-                <span asp-validation-for="created_by" class="text-danger"></span>
+                <label asp-for="Categoria.created_by" class="control-label"></label>
+                <input asp-for="Categoria.created_by" class="form-control" />
+                <span asp-validation-for="Categoria.created_by" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="moified_date" class="control-label"></label>
-                <input asp-for="moified_date" class="form-control" />
-                <span asp-validation-for="moified_date" class="text-danger"></span>
+                <label asp-for="Categoria.moified_date" class="control-label"></label>
+                <input asp-for="Categoria.moified_date" class="form-control" />
+                <span asp-validation-for="Categoria.moified_date" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Categoria.pasilloID" class="control-label"></label>
+                <select asp-for="Categoria.pasilloID" class="form-select" >
+                    {@if (Model.oListaPasillo.Count() > 0)
+                    {
+                        @foreach (var item in Model.oListaPasillo)
+                        {
+                            <option value=@item.nombre>@item.nombre</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="N/A">NO HAY REGISTROS</option>
+                    }
+
+                    }
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -44,5 +62,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

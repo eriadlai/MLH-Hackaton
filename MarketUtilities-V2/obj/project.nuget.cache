@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2UCmBD++Ir7YUIpLgF/B3tlHHEFPNaXyEmfLNYQpnnoDXFcBlEnu2Hkb8sPU1Ic2gQN4QTXf1cgQVnb9OZQ9iA==",
+  "dgSpecHash": "EZeaVfaFXsKeUAdHJtXaT79NiT0qTUkJmO0rtFOsHl1sWf1OhUsSXVZSISoXlw+MP2Q1ySgMQujv0bgS8JGIdw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Adlai CG\\source\\repos\\MarketUtilities-V2\\MarketUtilities-V2\\MarketUtilities-V2.csproj",
+  "projectFilePath": "D:\\DocumentosHDD\\Programacion\\Github Desktop\\MLH-Hackaton\\MarketUtilities-V2\\MarketUtilities-V2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Adlai CG\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Adlai CG\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

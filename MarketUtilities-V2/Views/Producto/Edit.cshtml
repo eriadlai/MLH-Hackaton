@@ -1,4 +1,4 @@
-﻿@model MarketUtilities_V2.Models.Producto
+﻿@model MarketUtilities_V2.Data.ViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -12,36 +12,54 @@
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="id" />
+            <input type="hidden" asp-for="Producto.id" />
             <div class="form-group">
-                <label asp-for="nombre" class="control-label"></label>
-                <input asp-for="nombre" class="form-control" />
-                <span asp-validation-for="nombre" class="text-danger"></span>
+                <label asp-for="Producto.nombre" class="control-label"></label>
+                <input asp-for="Producto.nombre" class="form-control" />
+                <span asp-validation-for="Producto.nombre" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="precio" class="control-label"></label>
-                <input asp-for="precio" class="form-control" />
-                <span asp-validation-for="precio" class="text-danger"></span>
+                <label asp-for="Producto.precio" class="control-label"></label>
+                <input asp-for="Producto.precio" class="form-control" />
+                <span asp-validation-for="Producto.precio" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="sku" class="control-label"></label>
-                <input asp-for="sku" class="form-control" />
-                <span asp-validation-for="sku" class="text-danger"></span>
+                <label asp-for="Producto.sku" class="control-label"></label>
+                <input asp-for="Producto.sku" class="form-control" />
+                <span asp-validation-for="Producto.sku" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="codigoDeBarras" class="control-label"></label>
-                <input asp-for="codigoDeBarras" class="form-control" />
-                <span asp-validation-for="codigoDeBarras" class="text-danger"></span>
+                <label asp-for="Producto.codigoDeBarras" class="control-label"></label>
+                <input asp-for="Producto.codigoDeBarras" class="form-control" />
+                <span asp-validation-for="Producto.codigoDeBarras" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="modified_by" class="control-label"></label>
-                <input asp-for="modified_by" class="form-control" />
-                <span asp-validation-for="modified_by" class="text-danger"></span>
+                <label asp-for="Producto.modified_by" class="control-label"></label>
+                <input asp-for="Producto.modified_by" class="form-control" />
+                <span asp-validation-for="Producto.modified_by" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="moified_date" class="control-label"></label>
-                <input asp-for="moified_date" class="form-control" />
-                <span asp-validation-for="moified_date" class="text-danger"></span>
+                <label asp-for="Producto.moified_date" class="control-label"></label>
+                <input asp-for="Producto.moified_date" class="form-control" />
+                <span asp-validation-for="Producto.moified_date" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="Producto.categoriaID" class="control-label"></label>
+                <select asp-for="Producto.categoriaID" class="form-select" >
+                    {@if (Model.oListaCategoria.Count() > 0)
+                    {
+                        @foreach (var item in Model.oListaCategoria)
+                        {
+                            <option value=@item.nombre>@item.nombre</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="N/A">NO HAY REGISTROS</option>
+                    }
+
+                    }
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

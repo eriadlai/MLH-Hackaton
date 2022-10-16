@@ -4,6 +4,7 @@ using MarketUtilities_V2.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MarketUtilities_V2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221016002939_pasilloIDNombre")]
+    partial class pasilloIDNombre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,9 +88,8 @@ namespace MarketUtilities_V2.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("id"), 1L, 1);
 
-                    b.Property<string>("categoriaID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("categoriaIDid")
+                        .HasColumnType("int");
 
                     b.Property<string>("codigoDeBarras")
                         .IsRequired()
@@ -112,6 +113,8 @@ namespace MarketUtilities_V2.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("id");
+
+                    b.HasIndex("categoriaIDid");
 
                     b.ToTable("Producto");
                 });
@@ -139,6 +142,17 @@ namespace MarketUtilities_V2.Migrations
                     b.HasKey("id");
 
                     b.ToTable("Usuario");
+                });
+
+            modelBuilder.Entity("MarketUtilities_V2.Models.Producto", b =>
+                {
+                    b.HasOne("MarketUtilities_V2.Models.Categoria", "categoriaID")
+                        .WithMany()
+                        .HasForeignKey("categoriaIDid")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("categoriaID");
                 });
 #pragma warning restore 612, 618
         }
